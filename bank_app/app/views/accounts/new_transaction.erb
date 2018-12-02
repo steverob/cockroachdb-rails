@@ -1,0 +1,19 @@
+<h1>Send Money</h1>
+<p id="notice"><%= notice %></p>
+<%= form_tag transact_account_path(@account), method: :post do %>
+  <div class="field">
+    <%= label_tag :to_account %>
+    <%= select_tag :to_account_id, options_from_collection_for_select(Account.where.not(id: @account.id), :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :amount %>
+    <%= number_field_tag :amount %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Send" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to account', @account %> 
